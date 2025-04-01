@@ -35,7 +35,7 @@ public class LogiqueJeu
             		supprimerGroupe(groupe);
             		effondrerPlateau();
             		int n = groupe.size();
-            		score += (n - 2) * (n - 2);
+            		score += 1 ; // A modifier pour que ca en rapport avec le tableau des scores donné dans la SAE
        		}
     	}
 	 private List<Bloc> trouverGroupe(int ligne, int colonne) 
