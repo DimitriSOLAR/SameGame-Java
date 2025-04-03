@@ -10,7 +10,14 @@ public class EcouteurDeSouris extends MouseAdapter {
 
     @Override
     public void mouseClicked(MouseEvent e) {
-        panneauJeu.getLogiqueJeu().clic(e.getY() / 30, e.getX() / 30);
+        int largeurBloc = panneauJeu.getWidth() / panneauJeu.getLogiqueJeu().getPlateau()[0].length;
+        int hauteurBloc = panneauJeu.getHeight() / panneauJeu.getLogiqueJeu().getPlateau().length;
+
+        int colonne = e.getX() / largeurBloc;
+        int ligne = e.getY() / hauteurBloc;
+
+        panneauJeu.getLogiqueJeu().clic(ligne, colonne);
+        
         panneauJeu.repaint();
     }
 }
