@@ -10,14 +10,17 @@ public class LogiqueJeu {
     private int score;
     private PanneauJeu panneauJeu;
 
-    public LogiqueJeu(int lignes, int colonnes, PanneauJeu panneauJeu) {
-        this.lignes = lignes;
-        this.colonnes = colonnes;
-        this.plateau = new Bloc[lignes][colonnes];
-        this.score = 0;
-        this.panneauJeu = panneauJeu;
-        initialiserPlateau();
+   public LogiqueJeu(int lignes, int colonnes, Bloc[][] grille, PanneauJeu panneauJeu) {
+    this.lignes = lignes;
+    this.colonnes = colonnes;
+    this.plateau = grille != null ? grille : new Bloc[lignes][colonnes];
+    this.score = 0;
+    this.panneauJeu = panneauJeu;
+    if (grille == null) {
+        initialiserPlateau(); // seulement si pas de fichier
     }
+}
+
 
     private void initialiserPlateau() {
         Random random = new Random();
