@@ -9,9 +9,11 @@ JVMFLAGS =
 SameGame.class: SameGame.java PanneauJeu.class LogiqueJeu.class Bloc.class EcouteurDeSouris.class
 	${JC} ${JCFLAGS} SameGame.java
 
-PanneauJeu.class: PanneauJeu.java LogiqueJeu.class Bloc.class EcouteurDeSouris.class
+PanneauJeu.class: PanneauJeu.java LogiqueJeu.class Bloc.class EcouteurDeSouris.class SurbrillanceSouris.class
 	${JC} ${JCFLAGS} PanneauJeu.java
 
+SurbrillanceSouris.class: SurbrillanceSouris.java
+	${JC} ${JCFLAGS} SurbrillanceSouris.java
 	
 LogiqueJeu.class: LogiqueJeu.java Bloc.class
 	${JC} ${JCFLAGS} LogiqueJeu.java
