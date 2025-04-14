@@ -6,10 +6,10 @@ JVM = java
 JVMFLAGS = 
 
 # Règles essentielles
-SameGame.class: SameGame.java PanneauJeu.class LogiqueJeu.class Bloc.class EcouteurDeSouris.class
+SameGame.class: SameGame.java PanneauJeu.class LogiqueJeu.class Bloc.class EcouteurDeSouris.class SurbrillanceSouris.class ChoixModeJeu.class
 	${JC} ${JCFLAGS} SameGame.java
 
-PanneauJeu.class: PanneauJeu.java LogiqueJeu.class Bloc.class EcouteurDeSouris.class SurbrillanceSouris.class
+PanneauJeu.class: PanneauJeu.java LogiqueJeu.class Bloc.class EcouteurDeSouris.class SurbrillanceSouris.class ChoixModeJeu.class
 	${JC} ${JCFLAGS} PanneauJeu.java
 
 SurbrillanceSouris.class: SurbrillanceSouris.java
@@ -19,10 +19,13 @@ LogiqueJeu.class: LogiqueJeu.java Bloc.class
 	${JC} ${JCFLAGS} LogiqueJeu.java
 
 EcouteurDeSouris.class: EcouteurDeSouris.java
-	${JC} ${JCFLAFS} EcouteurDeSouris.java
+	${JC} ${JCFLAGS} EcouteurDeSouris.java
 
 Bloc.class: Bloc.java
 	${JC} ${JCFLAGS} Bloc.java
+
+ChoixModeJeu.class: ChoixModeJeu.java
+	${JC} ${JCFLAGS} ChoixModeJeu.java
 
 # Règles optionnelles
 run: SameGame.class
