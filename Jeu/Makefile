@@ -6,10 +6,16 @@ JVM = java
 JVMFLAGS = 
 
 # Règles essentielles
-SameGame.class: SameGame.java PanneauJeu.class LogiqueJeu.class Bloc.class EcouteurDeSouris.class SurbrillanceSouris.class ChoixModeJeu.class
+SameGame.class: SameGame.java ChoixModeJeu.class FinDePartie.class PanneauJeu.class LogiqueJeu.class Bloc.class EcouteurDeSouris.class
 	${JC} ${JCFLAGS} SameGame.java
 
-PanneauJeu.class: PanneauJeu.java LogiqueJeu.class Bloc.class EcouteurDeSouris.class SurbrillanceSouris.class ChoixModeJeu.class
+ChoixModeJeu.class: ChoixModeJeu.java LogiqueJeu.class Bloc.class
+	${JC} ${JCFLAGS} ChoixModeJeu.java
+
+FinDePartie.class: FinDePartie.java 
+	${JC} ${JCFLAGS} FinDePartie.java
+
+PanneauJeu.class: PanneauJeu.java LogiqueJeu.class Bloc.class EcouteurDeSouris.class SurbrillanceSouris.class
 	${JC} ${JCFLAGS} PanneauJeu.java
 
 SurbrillanceSouris.class: SurbrillanceSouris.java
@@ -24,9 +30,6 @@ EcouteurDeSouris.class: EcouteurDeSouris.java
 Bloc.class: Bloc.java
 	${JC} ${JCFLAGS} Bloc.java
 
-ChoixModeJeu.class: ChoixModeJeu.java
-	${JC} ${JCFLAGS} ChoixModeJeu.java
-
 # Règles optionnelles
 run: SameGame.class
 	${JVM} ${JVMFLAGS} SameGame
@@ -34,9 +37,7 @@ run: SameGame.class
 clean:
 	-rm -f *.class
 
-mrproper: clean SameGame.class
+mrproper: clean
 
 # Buts factices
 .PHONY: run clean mrproper
-
-# Fin

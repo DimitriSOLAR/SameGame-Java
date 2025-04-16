@@ -8,10 +8,10 @@ public class ChoixModeJeu {
 
     public static Bloc[][] obtenirPlateauDepuisChoix(int lignes, int colonnes) {
         int choix = JOptionPane.showOptionDialog(null,
-                "Choisissez le mode de jeu",
+                "                   Choisissez le mode de jeu",
                 "Mode de Jeu",
                 JOptionPane.DEFAULT_OPTION,
-                JOptionPane.INFORMATION_MESSAGE,
+                JOptionPane.PLAIN_MESSAGE,
                 null,
                 new String[]{"Aléatoire", "Charger un fichier"},
                 "Aléatoire");
