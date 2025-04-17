@@ -62,7 +62,6 @@ public class PanneauJeu extends JPanel {
         int largeurBloc = Math.min(getWidth() / colonnes, getHeight() / lignes);
         int hauteurBloc = largeurBloc;
 
-        // Dessin du plateau et des blocs
         for (int i = 0; i < lignes; i++) {
             for (int j = 0; j < colonnes; j++) {
                 if (plateau[i][j] != null && plateau[i][j].getCouleur() != -1) {
