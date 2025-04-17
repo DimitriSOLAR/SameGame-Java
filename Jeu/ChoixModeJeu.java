@@ -7,6 +7,8 @@ import java.util.List;
 /**
  * Cette classe gère le choix du mode de jeu, permettant de choisir entre un plateau généré aléatoirement
  * ou un plateau chargé depuis un fichier.
+ * @author Malo Reboux
+ * @author Dimitri Solar
  */
 public class ChoixModeJeu {
 

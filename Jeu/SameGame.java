@@ -5,6 +5,8 @@ import java.awt.*;
  * Cette classe contient le point d'entrée du programme, le jeu `SameGame`.
  * Elle initialise l'interface graphique et commence le jeu.
  * Le jeu permet à l'utilisateur de jouer à une version interactive de SameGame.
+ * @author Malo Reboux 
+ * @author Dimitri Solar
  */
 
 public class SameGame {

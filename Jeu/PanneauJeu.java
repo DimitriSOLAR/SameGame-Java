@@ -4,6 +4,8 @@ import java.util.List;
 
 /**
  * Ce panneau représente le plateau du jeu et le score.
+ * @author Malo Reboux
+ * @author Dimitri Solar
  */
 public class PanneauJeu extends JPanel {
 

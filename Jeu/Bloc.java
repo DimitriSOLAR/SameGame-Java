@@ -11,6 +11,8 @@ public class Bloc {
     /**
      * Crée un bloc avec la couleur spécifiée.
      * @param couleur La couleur du bloc (un entier représentant la couleur).
+     * @author Malo Reboux
+     * @author Dimitri Solar
      */
 
     public Bloc(int couleur) {

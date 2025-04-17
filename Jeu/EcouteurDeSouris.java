@@ -4,6 +4,8 @@ import java.awt.event.MouseEvent;
 /**
  * Classe qui écoute les événements de souris sur le panneau de jeu et déclenche des actions
  * telles que les sélections de blocs ou les clics de souris.
+ * @author Malo Reboux
+ * @author Dimitri Solar
  */
 public class EcouteurDeSouris extends MouseAdapter {
     private PanneauJeu panneauJeu;

@@ -5,6 +5,8 @@ import java.awt.Point;
 /**
  * Cette classe gère la surbrillance des blocs du jeu lorsque la souris est déplacée.
  * Elle détecte la position de la souris et met en surbrillance les blocs sous le curseur.
+ * @author Malo Reboux
+ * @author Dimitri Solar
  */
 public class SurbrillanceSouris extends MouseMotionAdapter {
 

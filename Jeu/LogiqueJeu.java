@@ -4,6 +4,8 @@ import java.util.*;
 /**
  * La classe LogiqueJeu gère la logique du jeu. Elle gère le plateau, les actions des joueurs, le calcul du score,
  * ainsi que la gestion de la fin de la partie.
+ * @author Malo Reboux
+ * @author Dimitri Solar
  */
 public class LogiqueJeu {
     private Bloc[][] plateau;
