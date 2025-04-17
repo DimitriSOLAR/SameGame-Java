@@ -4,8 +4,18 @@ import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Cette classe gère le choix du mode de jeu, permettant de choisir entre un plateau généré aléatoirement
+ * ou un plateau chargé depuis un fichier.
+ */
 public class ChoixModeJeu {
 
+    /**
+     * Permet à l'utilisateur de choisir entre un plateau aléatoire ou un plateau chargé depuis un fichier.
+     * @param lignes Le nombre de lignes du plateau.
+     * @param colonnes Le nombre de colonnes du plateau.
+     * @return Le plateau de jeu, soit généré aléatoirement, soit chargé depuis un fichier.
+     */
     public static Bloc[][] obtenirPlateauDepuisChoix(int lignes, int colonnes) {
         int choix = JOptionPane.showOptionDialog(null,
                 "                   Choisissez le mode de jeu",
@@ -23,6 +33,13 @@ public class ChoixModeJeu {
         }
     }
 
+    /**
+     * Charge un plateau depuis un fichier sélectionné par l'utilisateur.
+     * Le fichier doit contenir un plateau de taille spécifique avec des lettres représentant les couleurs.
+     * @param lignes Le nombre de lignes du plateau.
+     * @param colonnes Le nombre de colonnes du plateau.
+     * @return Le plateau de jeu chargé depuis le fichier, ou un plateau aléatoire en cas d'erreur.
+     */
     private static Bloc[][] chargerPlateauDepuisFichier(int lignes, int colonnes) {
         JFileChooser fileChooser = new JFileChooser();
         int returnValue = fileChooser.showOpenDialog(null);
@@ -57,6 +74,12 @@ public class ChoixModeJeu {
         return genererPlateauAleatoire(lignes, colonnes); // Retourner un plateau aléatoire si aucun fichier n'est sélectionné
     }
 
+    /**
+     * Génère un plateau aléatoire avec des couleurs choisies au hasard pour chaque bloc.
+     * @param lignes Le nombre de lignes du plateau.
+     * @param colonnes Le nombre de colonnes du plateau.
+     * @return Un plateau de jeu généré aléatoirement.
+     */
     private static Bloc[][] genererPlateauAleatoire(int lignes, int colonnes) {
         Bloc[][] plateau = new Bloc[lignes][colonnes];
         for (int i = 0; i < lignes; i++) {

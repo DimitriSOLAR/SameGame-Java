@@ -1,6 +1,10 @@
-import java.util.*;
 import javax.swing.*;
+import java.util.*;
 
+/**
+ * La classe LogiqueJeu gère la logique du jeu. Elle gère le plateau, les actions des joueurs, le calcul du score,
+ * ainsi que la gestion de la fin de la partie.
+ */
 public class LogiqueJeu {
     private Bloc[][] plateau;
     private int lignes;
@@ -9,6 +13,14 @@ public class LogiqueJeu {
     private PanneauJeu panneauJeu;
     private boolean surveillerFinPartie = false;
 
+    /**
+     * Constructeur de la classe LogiqueJeu.
+     *
+     * @param lignes          Le nombre de lignes du plateau de jeu.
+     * @param colonnes        Le nombre de colonnes du plateau de jeu.
+     * @param plateauInitial  Le plateau de jeu initial, ou null pour générer un plateau aléatoire.
+     * @param panneauJeu      Le panneau de jeu sur lequel les informations seront affichées.
+     */
     public LogiqueJeu(int lignes, int colonnes, Bloc[][] plateauInitial, PanneauJeu panneauJeu) {
         this.lignes = lignes;
         this.colonnes = colonnes;
@@ -38,18 +50,39 @@ public class LogiqueJeu {
         }
     }
 
+    /**
+     * Définit le panneau de jeu associé.
+     *
+     * @param panneauJeu Le panneau de jeu.
+     */
     public void setPanneauJeu(PanneauJeu panneauJeu) {
         this.panneauJeu = panneauJeu;
     }
 
+    /**
+     * Récupère le plateau de jeu.
+     *
+     * @return Le plateau de jeu.
+     */
     public Bloc[][] getPlateau() {
         return plateau;
     }
 
+    /**
+     * Récupère le score actuel du joueur.
+     *
+     * @return Le score du joueur.
+     */
     public int getScore() {
         return score;
     }
 
+    /**
+     * Effectue un clic sur le plateau en sélectionnant un groupe de blocs à supprimer et met à jour le score.
+     *
+     * @param ligne    La ligne où le clic a été effectué.
+     * @param colonne La colonne où le clic a été effectué.
+     */
     public void clic(int ligne, int colonne) {
         List<Bloc> groupe = trouverGroupe(ligne, colonne);
         if (groupe.size() >= 2) {
@@ -66,6 +99,9 @@ public class LogiqueJeu {
         }
     }
 
+    /**
+     * Réorganise les blocs du plateau après un clic pour combler les espaces vides.
+     */
     private void compacter() {
         for (int j = 0; j < colonnes; j++) {
             int vide = lignes - 1;
@@ -99,6 +135,13 @@ public class LogiqueJeu {
         }
     }
 
+    /**
+     * Trouve le groupe de blocs connectés à partir d'un bloc donné.
+     *
+     * @param ligne    La ligne du bloc de départ.
+     * @param colonne La colonne du bloc de départ.
+     * @return La liste des blocs du groupe.
+     */
     public List<Bloc> trouverGroupe(int ligne, int colonne) {
         List<Bloc> groupe = new ArrayList<>();
         boolean[][] visite = new boolean[lignes][colonnes];
@@ -129,6 +172,12 @@ public class LogiqueJeu {
         return groupe;
     }
 
+    /**
+     * Récupère la ligne du bloc spécifié.
+     *
+     * @param bloc Le bloc pour lequel obtenir la ligne.
+     * @return La ligne du bloc.
+     */
     public int obtenirLigne(Bloc bloc) {
         for (int i = 0; i < lignes; i++) {
             for (int j = 0; j < colonnes; j++) {
@@ -138,6 +187,12 @@ public class LogiqueJeu {
         return -1;
     }
 
+    /**
+     * Récupère la colonne du bloc spécifié.
+     *
+     * @param bloc Le bloc pour lequel obtenir la colonne.
+     * @return La colonne du bloc.
+     */
     public int obtenirColonne(Bloc bloc) {
         for (int i = 0; i < lignes; i++) {
             for (int j = 0; j < colonnes; j++) {
@@ -147,11 +202,23 @@ public class LogiqueJeu {
         return -1;
     }
 
+    /**
+     * Trouve un groupe de blocs pour la surbrillance à afficher avec la souris.
+     *
+     * @param ligne    La ligne du bloc à examiner.
+     * @param colonne La colonne du bloc à examiner.
+     * @return Le groupe de blocs à surligner, ou null si aucun groupe valide n'est trouvé.
+     */
     public List<Bloc> trouverGroupePourSurbrillance(int ligne, int colonne) {
         List<Bloc> groupe = trouverGroupe(ligne, colonne);
         return groupe.size() >= 2 ? groupe : null;
     }
 
+    /**
+     * Vérifie s'il reste des groupes de blocs valides sur le plateau.
+     *
+     * @return True si des groupes sont encore présents, sinon False.
+     */
     private boolean resteGroupes() {
         for (int i = 0; i < lignes; i++) {
             for (int j = 0; j < colonnes; j++) {
@@ -162,26 +229,34 @@ public class LogiqueJeu {
         return false;
     }
 
+    /**
+     * Affiche la fin de la partie et propose au joueur de rejouer ou quitter.
+     */
     private void finDePartie() {
         int reponse = JOptionPane.showOptionDialog(null,
                 "Partie terminée ! Score final : " + score + "\nVoulez-vous rejouer ?",
                 "Fin de partie",
-                JOptionPane.YES_NO_OPTION,
-                JOptionPane.INFORMATION_MESSAGE,
+                JOptionPane.DEFAULT_OPTION,
+                JOptionPane.PLAIN_MESSAGE,
                 null,
                 new String[]{"Rejouer", "Quitter"},
                 "Rejouer");
 
         if (reponse == JOptionPane.YES_OPTION) {
             SwingUtilities.invokeLater(() -> {
-                SameGame.main(new String[]{});
+                SameGame.main(new String[0]);
             });
         } else {
             System.exit(0);
         }
     }
 
-    public void setSurveillerFinPartie(boolean surveiller) {
-        this.surveillerFinPartie = surveiller;
+    /**
+     * Définit si la fin de partie doit être surveillée.
+     *
+     * @param surveillerFinPartie True pour surveiller la fin de partie, sinon False.
+     */
+    public void setSurveillerFinPartie(boolean surveillerFinPartie) {
+        this.surveillerFinPartie = surveillerFinPartie;
     }
 }

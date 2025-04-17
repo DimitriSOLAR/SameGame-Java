@@ -6,14 +6,11 @@ JVM = java
 JVMFLAGS = 
 
 # Règles essentielles
-SameGame.class: SameGame.java ChoixModeJeu.class FinDePartie.class PanneauJeu.class LogiqueJeu.class Bloc.class EcouteurDeSouris.class
+SameGame.class: SameGame.java ChoixModeJeu.class PanneauJeu.class LogiqueJeu.class Bloc.class EcouteurDeSouris.class
 	${JC} ${JCFLAGS} SameGame.java
 
 ChoixModeJeu.class: ChoixModeJeu.java LogiqueJeu.class Bloc.class
 	${JC} ${JCFLAGS} ChoixModeJeu.java
-
-FinDePartie.class: FinDePartie.java 
-	${JC} ${JCFLAGS} FinDePartie.java
 
 PanneauJeu.class: PanneauJeu.java LogiqueJeu.class Bloc.class EcouteurDeSouris.class SurbrillanceSouris.class
 	${JC} ${JCFLAGS} PanneauJeu.java
